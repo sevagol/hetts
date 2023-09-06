@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # Загрузка данных из CSV файла
 data = []
-with open('paragrphs1.csv', 'r', newline='', encoding='utf-8') as csv_file:
+with open('paragrphs2.csv', 'r', newline='', encoding='utf-8') as csv_file:
     csv_reader = csv.reader(csv_file)
     for row in csv_reader:
         data.append(row)
