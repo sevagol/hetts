@@ -1,0 +1,50 @@
+
+/* Стили для ссылок */
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Добавьте стили для центрирования и увеличения размера заголовка и строки поиска */
+h1 {
+    text-align: center;
+    font-size: 36px;
+}
+
+form {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    font-size: 24px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 24px;
+}
+
+/* Добавьте стили для градиентного фона и полупрозрачности контейнера */
+body {
+    background: linear-gradient(to bottom, #3498db, #2980b9); /* Градиентный фон */
+    font-family: Arial, sans-serif;
+    color: #fff; /* Цвет текста на фоне */
+}
+
+.search-results {
+    background: rgba(255, 255, 255, 0.7); /* Полупрозрачный фон контейнера */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #333; /* Цвет текста в контейнере */
+}
+

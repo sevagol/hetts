@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Поиск по Хеттским корням</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поиск по хеттским корням</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Поиск в CSV</h1>
+    <h1>Поиск</h1>
     <form method="POST">
-        <input type="text" name="search_query" value="{{ search_query }}">
-        <input type="submit" value="Искать">
+        <input type="text" name="search_query" placeholder="Введите запрос">
+        <button type="submit">Искать</button>
     </form>
-    {% if results %}
-    <h2>Результаты поиска:</h2>
-    <ul>
-        {% for result in results %}
-        <li>
-            <a href="{{ result.paragraph | safe }}" target="_blank">{{ result.paragraph }}</a>
-
-        </li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>Ничего не найдено.</p>
-    {% endif %}
+    
+    <div class="search-results">
+        {% if results %}
+            <h2>Результаты поиска:</h2>
+            <ul>
+                {% for result in results %}
+                    <li><a href="{{ result.url | safe }}" target="_blank">{{ result.paragraph }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Ничего не найдено.</p>
+        {% endif %}
+    </div>
 </body>
 </html>
