@@ -20,15 +20,23 @@ def index():
     return render_template('index.html', results=None, search_query=None)
 
 # Функция для поиска по CSV
+# Функция для поиска по CSV и удаления дубликатов
 def search_in_csv(query):
     results = []
+    seen = set()  # Множество для отслеживания уникальных результатов
     for row in data:
         url, paragraph, paragraph_text = row
         url = url.strip("[]")
         url = url.strip("'")
+        paragraph = paragraph.strip("[]")
+        paragraph = paragraph.strip("'")
         if query in paragraph_text:
-            results.append({'url': url, 'paragraph': paragraph})
+            result_tuple = (url, paragraph)  # Создаем кортеж (URL, параграф)
+            if result_tuple not in seen:  # Проверяем, не является ли кортеж дубликатом
+                seen.add(result_tuple)
+                results.append({'url': url, 'paragraph': paragraph})
     return results
+
 
 # Отключите авто-экранирование URL в шаблоне
 app.jinja_env.autoescape = False
