@@ -1,18 +1,24 @@
-
-/* Стили для ссылок */
-a {
-    color: #007BFF;
-    text-decoration: none;
+/* Добавьте стили для округления и стилизации элементов */
+/* Замените градиентный фон на мягкий зеленый фон */
+body {
+    background-color: #3caf57; /* Мягкий зеленый фон */
+    font-family: Arial, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
-a:hover {
-    text-decoration: underline;
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* Добавьте стили для центрирования и увеличения размера заголовка и строки поиска */
 h1 {
     text-align: center;
     font-size: 36px;
+    margin-bottom: 20px;
 }
 
 form {
@@ -25,26 +31,35 @@ input[type="text"] {
     width: 80%;
     padding: 10px;
     font-size: 24px;
+    border: none;
+    border-radius: 10px;
 }
 
 button[type="submit"] {
     padding: 10px 20px;
     font-size: 24px;
-}
-
-/* Добавьте стили для градиентного фона и полупрозрачности контейнера */
-body {
-    background: linear-gradient(to bottom, #3498db, #2980b9); /* Градиентный фон */
-    font-family: Arial, sans-serif;
-    color: #fff; /* Цвет текста на фоне */
+    border: none;
+    border-radius: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
 }
 
 .search-results {
-    background: rgba(255, 255, 255, 0.7); /* Полупрозрачный фон контейнера */
+    background: rgba(255, 255, 255, 0.7);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     font-family: Arial, sans-serif;
-    color: #333; /* Цвет текста в контейнере */
+    color: #333;
+    margin-top: 20px;
 }
 
+.search-results a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.search-results a:hover {
+    text-decoration: underline;
+}
