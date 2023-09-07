@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # Загрузка данных из CSV файла
 data = []
-with open('paragrphs2.csv', 'r', newline='', encoding='utf-8') as csv_file:
+with open('combined.csv', 'r', newline='', encoding='utf-8') as csv_file:
     csv_reader = csv.reader(csv_file)
     for row in csv_reader:
         data.append(row)
@@ -22,8 +22,9 @@ def index():
 
 # Функция для поиска по CSV и формирования текста для ссылок
 # Функция для поиска по CSV и формирования текста для ссылок
+# Функция для поиска по CSV и группировки результатов по категориям
 def search_in_csv(query):
-    results = []
+    results = {'молитвы': [], 'мифы': [], 'ритуалы': []}
     seen = set()
     for row in data:
         url, paragraph, paragraph_text = row
@@ -33,14 +34,25 @@ def search_in_csv(query):
             result_tuple = (url, paragraph)
             if result_tuple not in seen:
                 seen.add(result_tuple)
+                # Проверяем, содержит ли URL одно из ключевых слов
+                if 'gebet' in url:
+                    category = 'молитвы'
+                elif 'myth' in url:
+                    category = 'мифы'
+                elif 'besrit' in url:
+                    category = 'ритуалы'
+                else:
+                    category = 'другое'  # Вы можете добавить другую категорию по умолчанию, если нужно
                 # Извлекаем значения xst и prgr из URL
                 parsed_url = urlparse(url)
                 xst = parse_qs(parsed_url.query).get('xst', [''])[0]
                 prgr = parse_qs(parsed_url.query).get('prgr', [''])[0]
                 # Формируем текст для ссылки с использованием HTML-сущностей
                 link_text = f"{xst}. &sect;{prgr}"
-                # Сохраняем URL без изменений
-                results.append({'url': url, 'paragraph': link_text})
+                # Сохраняем URL без изменений в соответствующей категории
+                results[category].append({'url': url, 'paragraph': link_text})
+    return results
+
     return results
 
 
