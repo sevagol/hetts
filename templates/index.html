@@ -19,19 +19,30 @@
                 <h3>Молитвы:</h3>
                 <ul>
                     {% for result in results['молитвы'] %}
-                        <li><a href="{{ result.url }}">{{ result.paragraph }}</a></li>
+                    <div class="result">
+                        <a href="{{ result.url }}" target="_blank">{{ result.link_text }}</a>
+                        <div class="paragraph-html">{{ result.paragraph_html | replace('\n', '') | safe }}</div>
+                      </div>
                     {% endfor %}
                 </ul>
                 <h3>Мифы:</h3>
                 <ul>
                     {% for result in results['мифы'] %}
-                        <li><a href="{{ result.url }}">{{ result.paragraph }}</a></li>
+                    <div class="result">
+                        <a href="{{ result.url }}" target="_blank">{{ result.link_text }}</a>
+                        <div class="paragraph-html" id="{{ result.id }}">
+                            {{ result.paragraph_html | safe }}
+                          </div>                          
+                      </div>
                     {% endfor %}
                 </ul>
                 <h3>Ритуалы:</h3>
                 <ul>
                     {% for result in results['ритуалы'] %}
-                        <li><a href="{{ result.url }}">{{ result.paragraph }}</a></li>
+                    <div class="result">
+                        <a href="{{ result.url }}" target="_blank">{{ result.link_text }}</a>
+                        <div class="paragraph-html">{{ result.paragraph_html | safe }}</div>
+                      </div>
                     {% endfor %}
                 </ul>
             </div>
